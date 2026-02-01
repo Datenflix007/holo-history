@@ -9,10 +9,12 @@
 1) Backend starten:
    - `cd server`
    - `npm install`
-   - `node index.js`
+   - `npm run dev`
 
 2) Frontend oeffnen:
-   - `web/index.html` im Browser oeffnen (oder `http://localhost:8787/index.html`).
+   - `cd web`
+   - `npx serve`
+   - dann den Lokalhost Link zum Webbrowser öffnen
 
 3) Avatar erstellen:
    - Ansicht "Quellenkarten" -> "Avatar erstellen" -> Bild hochladen -> "Avatar erzeugen".
