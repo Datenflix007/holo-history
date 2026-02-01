@@ -18,6 +18,10 @@ const toggleHolo = document.getElementById("toggleHolo");
 let currentPersona = { ...DEFAULT_PERSONA };
 let currentView = "studio";
 let lastGeneratedAvatar = null;
+let lastUserMessage = "";
+let chatLogEl = null;
+let chatInputEl = null;
+const chatHistory = [];
 
 toStudio.onclick = showStudio;
 toCards.onclick = showCards;
@@ -33,6 +37,8 @@ async function showStudio() {
 
 function showCards() {
   currentView = "cards";
+  chatLogEl = null;
+  chatInputEl = null;
   renderCards();
 }
 
@@ -48,26 +54,24 @@ function renderStudio(){
           Testhologramm: <b>${escapeHtml(currentPersona.name || DEFAULT_PERSONA.name)}</b> (${escapeHtml(currentPersona.years || DEFAULT_PERSONA.years)})
         </div>
         ${avatarBlock}
-        <audio id="voice" controls></audio>
-        <div class="subs" id="subs">
-          <div class="small">Untertitel erscheinen hier...</div>
-        </div>
-        <div class="holo-hide" style="margin-top:10px;">
-          <button id="btnTalk">Push-to-talk (halten)</button>
-          <button id="btnFakeAnswer">Fake-Antwort abspielen</button>
-        </div>
-        <div class="holo-hide" style="margin-top:10px;">
-          <div class="small">Spracheingabe / Frage</div>
-          <textarea id="questionInput" rows="3" placeholder="Sprich oder tippe deine Frage..."></textarea>
-          <div style="display:flex; gap:8px; align-items:center; margin-top:6px;">
-            <button id="btnSend">Frage absenden</button>
-            <div id="sttStatus" class="small"></div>
+        <audio id="voice" class="audio-hidden"></audio>
+        <div class="chat">
+          <div id="chatLog" class="chat-log"></div>
+          <div class="chat-input-row">
+            <input id="chatInput" class="chat-input" type="text" placeholder="Gib eine Nachricht ein." autocomplete="off"/>
+            <button id="chatMic" class="icon-btn" title="Spracheingabe">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a4 4 0 0 0-4 4v6a4 4 0 1 0 8 0V6a4 4 0 0 0-4-4zm6 10a6 6 0 0 1-12 0H4a8 8 0 0 0 7 7.94V22h2v-2.06A8 8 0 0 0 20 12z" fill="currentColor"/></svg>
+            </button>
+            <button id="chatSend" class="icon-btn send" title="Senden">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14l-5-5 1.4-1.4L22.8 12l-8.4 6.4L13 17l5-5H4z" fill="currentColor"/></svg>
+            </button>
           </div>
+          <div id="sttStatus" class="small status"></div>
         </div>
       </section>
 
       <aside class="card holo-hide">
-        <h3>Kontext / Quellen (Gruppe A)</h3>
+        <h3>Kontext</h3>
         <div class="small">Diese Karten wuerdest du in der echten Demo automatisch als Kontext an die Realtime-Session schicken.</div>
         <div id="cardsList" style="margin-top:10px;"></div>
       </aside>
@@ -80,43 +84,27 @@ function renderStudio(){
     unlock = startHoloAvatar(canvas, audioEl, currentPersona);
   }
 
-  const btnTalk = document.getElementById("btnTalk");
-  const btnFakeAnswer = document.getElementById("btnFakeAnswer");
-  const btnSend = document.getElementById("btnSend");
-  const questionInput = document.getElementById("questionInput");
+  chatLogEl = document.getElementById("chatLog");
+  chatInputEl = document.getElementById("chatInput");
+  const chatSend = document.getElementById("chatSend");
+  const chatMic = document.getElementById("chatMic");
   const sttStatus = document.getElementById("sttStatus");
+  renderChatHistory();
 
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   let recognizer = null;
   let isRecording = false;
-  let micStream = null;
   let finalTranscript = "";
-  const btnTalkLabel = btnTalk?.textContent || "";
-
   function setRecording(active) {
-    if (!btnTalk) return;
-    if (active) {
-      btnTalk.textContent = "Aufnahme... (loslassen)";
-      sttStatus.textContent = "Hoere zu...";
-    } else {
-      btnTalk.textContent = btnTalkLabel;
-      if (sttStatus.textContent === "Hoere zu...") sttStatus.textContent = "";
-    }
-  }
-
-  async function ensureMicPermission() {
-    if (!navigator.mediaDevices?.getUserMedia || micStream) return;
-    try {
-      micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    } catch (err) {
-      sttStatus.textContent = "Kein Mikrofonzugriff.";
-    }
+    if (!chatMic) return;
+    chatMic.classList.toggle("active", active);
+    sttStatus.textContent = active ? "Hoere zu..." : "";
   }
 
   function startRecognition() {
     if (!recognizer || isRecording) return;
     isRecording = true;
-    finalTranscript = questionInput.value.trim();
+    finalTranscript = chatInputEl.value.trim();
     if (finalTranscript) finalTranscript += " ";
     setRecording(true);
     try {
@@ -141,7 +129,7 @@ function renderStudio(){
     recognizer = new SpeechRecognition();
     recognizer.lang = "de-DE";
     recognizer.interimResults = true;
-    recognizer.continuous = true;
+    recognizer.continuous = false;
     recognizer.onresult = (event) => {
       let interim = "";
       for (let i = event.resultIndex; i < event.results.length; i++) {
@@ -153,7 +141,7 @@ function renderStudio(){
           interim += text;
         }
       }
-      questionInput.value = (finalTranscript + interim).trim();
+      chatInputEl.value = (finalTranscript + interim).trim();
     };
     recognizer.onerror = (event) => {
       sttStatus.textContent = `STT Fehler: ${event.error}`;
@@ -164,89 +152,82 @@ function renderStudio(){
     };
   } else {
     if (sttStatus) sttStatus.textContent = "Spracherkennung nicht verfuegbar. Bitte tippen.";
+    if (chatMic) chatMic.disabled = true;
   }
 
-  if (btnTalk) {
-    btnTalk.onpointerdown = async (e) => {
-      e.preventDefault();
+  if (chatMic) {
+    chatMic.onclick = async () => {
       await unlock();
-      await ensureMicPermission();
-      startRecognition();
+      if (!recognizer) return;
+      if (isRecording) {
+        stopRecognition();
+      } else {
+        startRecognition();
+      }
     };
-    btnTalk.onpointerup = stopRecognition;
-    btnTalk.onpointerleave = stopRecognition;
-    btnTalk.onpointercancel = stopRecognition;
   }
 
   function renderAnswer(data) {
     const text = data?.text || "";
     const sources = data?.sources || [];
-    const intent = data?.intent ? `<span class="pill">Modus: ${escapeHtml(data.intent)}</span>` : "";
-    const sourcePills = sources.map(id => `<span class="pill">Beleg: ${escapeHtml(id)}</span>`).join(" ");
-    document.getElementById("subs").innerHTML = `
-      <div>${escapeHtml(text)}</div>
-      <div style="margin-top:8px;">
-        ${sourcePills} ${intent}
-      </div>
-    `;
+    const intent = data?.intent || "";
+    addChatMessage({ role: "assistant", text, sources, intent });
     speakText(text);
   }
 
   function renderError(message) {
-    document.getElementById("subs").innerHTML = `
-      <div>${escapeHtml(message)}</div>
-    `;
+    addChatMessage({ role: "assistant", text: message || "Fehler beim Senden" });
   }
 
-  if (btnSend) {
-    btnSend.onclick = async () => {
-      const query = questionInput.value.trim();
-      if (!query) {
-        sttStatus.textContent = "Bitte erst eine Frage eingeben.";
+  async function sendMessage() {
+    const query = chatInputEl.value.trim();
+    if (!query) {
+      sttStatus.textContent = "Bitte erst eine Frage eingeben.";
+      return;
+    }
+    lastUserMessage = query;
+    addChatMessage({ role: "user", text: query });
+    chatInputEl.value = "";
+    chatInputEl.focus();
+    await unlock();
+    chatSend.disabled = true;
+    chatMic.disabled = true;
+    sttStatus.textContent = "Sende Frage...";
+    try {
+      const res = await fetch(`${API}/api/ask`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ groupId: CONTEXT_GROUP_ID, query, persona: currentPersona })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Fehler beim Senden");
+      renderAnswer(data);
+    } catch (err) {
+      renderError(err.message || "Fehler beim Senden");
+    } finally {
+      chatSend.disabled = false;
+      chatMic.disabled = false;
+      if (sttStatus.textContent === "Sende Frage...") sttStatus.textContent = "";
+    }
+  }
+
+  if (chatSend) {
+    chatSend.onclick = sendMessage;
+  }
+
+  if (chatInputEl) {
+    chatInputEl.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        sendMessage();
         return;
       }
-      await unlock();
-      btnSend.disabled = true;
-      sttStatus.textContent = "Sende Frage...";
-      try {
-        const res = await fetch(`${API}/api/ask`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ groupId: CONTEXT_GROUP_ID, query, persona: currentPersona })
-        });
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.error || "Fehler beim Senden");
-        renderAnswer(data);
-      } catch (err) {
-        renderError(err.message || "Fehler beim Senden");
-      } finally {
-        btnSend.disabled = false;
-        if (sttStatus.textContent === "Sende Frage...") sttStatus.textContent = "";
+      if (event.key === "ArrowUp" && !chatInputEl.value && lastUserMessage) {
+        event.preventDefault();
+        chatInputEl.value = lastUserMessage;
+        chatInputEl.setSelectionRange(lastUserMessage.length, lastUserMessage.length);
       }
-    };
-  }
-
-  if (btnFakeAnswer) {
-    btnFakeAnswer.onclick = async () => {
-      await unlock();
-      btnFakeAnswer.disabled = true;
-      sttStatus.textContent = "Hole Fake-Antwort...";
-      try {
-        const res = await fetch(`${API}/api/fake-answer`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ groupId: CONTEXT_GROUP_ID, persona: currentPersona })
-        });
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.error || "Fehler bei Fake-Antwort");
-        renderAnswer(data);
-      } catch (err) {
-        renderError(err.message || "Fehler bei Fake-Antwort");
-      } finally {
-        btnFakeAnswer.disabled = false;
-        if (sttStatus.textContent === "Hole Fake-Antwort...") sttStatus.textContent = "";
-      }
-    };
+    });
   }
 
   loadCards(CONTEXT_GROUP_ID);
@@ -496,6 +477,38 @@ async function savePersona(groupId, persona) {
   setLocalPersona(groupId, payload);
   await pushPersona(groupId, payload);
   return payload;
+}
+
+function addChatMessage(message) {
+  chatHistory.push(message);
+  renderChatMessage(message);
+}
+
+function renderChatHistory() {
+  if (!chatLogEl) return;
+  chatLogEl.innerHTML = "";
+  chatHistory.forEach(renderChatMessage);
+}
+
+function renderChatMessage(message) {
+  if (!chatLogEl || !message) return;
+  const row = document.createElement("div");
+  row.className = `chat-row ${message.role}`;
+  const bubble = document.createElement("div");
+  bubble.className = "chat-bubble";
+  const safeText = escapeHtml(message.text || "");
+  let metaHtml = "";
+  if (message.sources && message.sources.length) {
+    const sourcePills = message.sources.map(id => `<span class="pill">Beleg: ${escapeHtml(id)}</span>`).join(" ");
+    metaHtml += `<div class="chat-meta">${sourcePills}</div>`;
+  }
+  if (message.intent) {
+    metaHtml += `<div class="chat-meta"><span class="pill">Modus: ${escapeHtml(message.intent)}</span></div>`;
+  }
+  bubble.innerHTML = `<div>${safeText}</div>${metaHtml}`;
+  row.appendChild(bubble);
+  chatLogEl.appendChild(row);
+  chatLogEl.scrollTop = chatLogEl.scrollHeight;
 }
 
 function speakText(text) {
