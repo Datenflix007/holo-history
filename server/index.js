@@ -2,6 +2,8 @@ import express from "express";
 import cors from "cors";
 import { initDb, addCard, listCards, topKCards } from "./storage.js";
 import { config } from "./config.js";
+import { buildSystemPrompt } from "./prompts.js";
+import { chatCompletion } from "./llm.js";
 
 await initDb();
 
@@ -26,6 +28,60 @@ app.get("/api/cards", async (req,res) => {
 app.post("/api/retrieve", async (req,res) => {
   const { groupId, query } = req.body || {};
   res.json({ cards: await topKCards(groupId, query, 6) });
+});
+
+function formatCards(cards) {
+  if (!cards || cards.length === 0) return "Keine Karten vorhanden.";
+  return cards.map(c => {
+    const parts = [`[${c.id}] ${c.title}: ${c.claim}`];
+    if (c.quote) parts.push(`Zitat: ${c.quote}`);
+    if (c.source) parts.push(`Quelle: ${c.source}`);
+    return `- ${parts.join(" | ")}`;
+  }).join("\n");
+}
+
+function normalizePersona(persona = {}) {
+  return {
+    name: persona.name || "Unbekannt",
+    year: persona.year || persona.years || "unbekannt",
+    place: persona.place || "unbekannt",
+  };
+}
+
+app.post("/api/ask", async (req,res) => {
+  try {
+    const { groupId, query, persona } = req.body || {};
+    if (!groupId || !query) return res.status(400).json({ error:"missing fields" });
+    const cards = await topKCards(groupId, query, 6);
+    const system = `${buildSystemPrompt(normalizePersona(persona))}\nKARTEN:\n${formatCards(cards)}\nANTWORT:`;
+    const user = `Frage: ${query}\nBitte antworte kurz. Gib nur den Antworttext, keine Labels.`;
+    const text = await chatCompletion({ system, user, temperature: 0.4 });
+    res.json({ text, sources: cards.map(c => c.id) });
+  } catch (err) {
+    res.status(500).json({ error: err.message || "LLM error" });
+  }
+});
+
+app.post("/api/fake-answer", async (req,res) => {
+  try {
+    const { groupId, persona } = req.body || {};
+    if (!groupId) return res.status(400).json({ error:"missing fields" });
+    const intents = [
+      { id: "self", instruction: "Sag in 1-2 kurzen Saetzen etwas ueber dich selbst." },
+      { id: "cabinet", instruction: "Stelle eine kurze Frage an dein Kabinett." },
+      { id: "people", instruction: "Stelle eine kurze Frage an die Bevoelkerung." },
+      { id: "opposition", instruction: "Stelle eine kurze Frage an politische Gegner." },
+      { id: "decision", instruction: "Nenne eine Entscheidung deiner Regentschaft in 1-2 Saetzen." },
+    ];
+    const intent = intents[Math.floor(Math.random() * intents.length)];
+    const cards = await topKCards(groupId, intent.instruction, 6);
+    const system = `${buildSystemPrompt(normalizePersona(persona))}\nKARTEN:\n${formatCards(cards)}\nSTIL: ${intent.instruction}\nGib nur den Text aus, ohne Labels.`;
+    const user = "Erzeuge eine kurze Aussage oder Frage.";
+    const text = await chatCompletion({ system, user, temperature: 0.8 });
+    res.json({ text, sources: cards.map(c => c.id), intent: intent.id });
+  } catch (err) {
+    res.status(500).json({ error: err.message || "LLM error" });
+  }
 });
 
 /**

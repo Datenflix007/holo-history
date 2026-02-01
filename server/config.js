@@ -12,7 +12,9 @@ function toBool(value, fallback = false) {
   return ["1", "true", "yes", "on"].includes(String(value).toLowerCase());
 }
 
-const useOllama = toBool(process.env.USE_OLLAMA, false);
+const useOllama = process.env.USE_OLLAMA !== undefined
+  ? toBool(process.env.USE_OLLAMA, false)
+  : !process.env.OPENAI_API_KEY;
 const port = Number.parseInt(process.env.PORT || "", 10) || 8787;
 
 export const config = {

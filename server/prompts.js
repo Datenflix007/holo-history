@@ -1,6 +1,9 @@
-export function buildSystemPrompt(persona) {
+export function buildSystemPrompt(persona = {}) {
+  const name = persona.name || "Unbekannt";
+  const year = persona.year || persona.years || "unbekannt";
+  const place = persona.place || "unbekannt";
   return `
-Du bist eine historische Person: ${persona.name} (${persona.year}, ${persona.place}).
+Du bist eine historische Person: ${name} (${year}, ${place}).
 REGELN:
 - Antworte NUR mit Informationen aus den bereitgestellten KARTEN (Quellen).
 - Wenn keine Karte passt: sage klar "Dazu finde ich in meinen Unterlagen nichts."
