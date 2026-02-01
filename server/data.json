@@ -1,0 +1,62 @@
+{
+  "groups": {
+    "group-a": {
+      "cards": [
+        {
+          "id": "LP-1830",
+          "title": "July Revolution 1830",
+          "claim": "The July Revolution in 1830 led to the abdication of Charles X and brought Louis-Philippe of the House of Orleans to the throne as \"King of the French.\"",
+          "quote": "",
+          "source": "Test data",
+          "reliability": 4,
+          "createdAt": 1769951369811
+        },
+        {
+          "id": "LP-ORL",
+          "title": "House of Orleans",
+          "claim": "Louis-Philippe belonged to the Orleans branch of the Bourbon family.",
+          "quote": "",
+          "source": "Test data",
+          "reliability": 4,
+          "createdAt": 1769951370811
+        },
+        {
+          "id": "LP-JUL",
+          "title": "July Monarchy",
+          "claim": "His reign from 1830 to 1848 is known as the July Monarchy and leaned on a constitutional framework and a bourgeois political base.",
+          "quote": "",
+          "source": "Test data",
+          "reliability": 3,
+          "createdAt": 1769951371811
+        },
+        {
+          "id": "LP-1848",
+          "title": "Abdication 1848",
+          "claim": "He abdicated during the 1848 Revolution and went into exile in Britain.",
+          "quote": "",
+          "source": "Test data",
+          "reliability": 4,
+          "createdAt": 1769951372811
+        },
+        {
+          "id": "LP-CIT",
+          "title": "Citizen King",
+          "claim": "He cultivated the image of a \"Citizen King\" and was often associated with the tricolor flag.",
+          "quote": "",
+          "source": "Test data",
+          "reliability": 3,
+          "createdAt": 1769951373811
+        },
+        {
+          "id": "LP-ECON",
+          "title": "Economic change",
+          "claim": "The period saw railway expansion and industrial growth in France.",
+          "quote": "",
+          "source": "Test data",
+          "reliability": 3,
+          "createdAt": 1769951374811
+        }
+      ]
+    }
+  }
+}
