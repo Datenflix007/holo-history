@@ -2,7 +2,8 @@
 
 ## Quick start
 
-![Uploading Screenshot 2026-02-01 165507.png…]()
+<img width="1225" height="1187" alt="Screenshot 2026-02-01 165507" src="https://github.com/user-attachments/assets/df698f08-aa76-4989-b56b-c3579a067aef" />
+
 
 
 1) Backend starten:
