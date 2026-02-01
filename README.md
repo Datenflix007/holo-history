@@ -1,5 +1,20 @@
 # holo-history
 
+## Quick start
+
+1) Backend starten:
+   - `cd server`
+   - `npm install`
+   - `node index.js`
+
+2) Frontend oeffnen:
+   - `web/index.html` im Browser oeffnen (oder `http://localhost:8787/index.html`).
+
+3) Avatar erstellen:
+   - Ansicht "Quellenkarten" -> "Avatar erstellen" -> Bild hochladen -> "Avatar erzeugen".
+   - Optional: Provider-Keys in `server/.env` setzen (siehe `server/.env.example`).
+   - Ohne Keys laeuft der lokale Holo-Filter als Fallback.
+
 
 
 Ja — du kannst dir eine **“WOW-Demo”** bauen, die auf **Windows** läuft (und genauso auf macOS/Linux), indem du sie als **lokale Web-App** baust und bei Bedarf als **Desktop-App (Electron)** verpackst. Die Ausgabe ist dann immer “ein Bildschirm/HDMI-Signal” → das funktioniert **auf normalem Display** *und* auf “Hologramm-Geräten” (die in der Praxis fast immer einfach HDMI/WebView nehmen).
