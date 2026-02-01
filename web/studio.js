@@ -31,8 +31,16 @@ function renderStudio(){
           <div class="small">Untertitel erscheinen hier…</div>
         </div>
         <div style="margin-top:10px;">
-          <button id="btnTalk">🎙️ Push-to-talk (Demo)</button>
-          <button id="btnFakeAnswer">✨ Fake-Antwort abspielen</button>
+          <button id="btnTalk">Push-to-talk (halten)</button>
+          <button id="btnFakeAnswer">Fake-Antwort abspielen</button>
+        </div>
+        <div style="margin-top:10px;">
+          <div class="small">Spracheingabe / Frage</div>
+          <textarea id="questionInput" rows="3" placeholder="Sprich oder tippe deine Frage..."></textarea>
+          <div style="display:flex; gap:8px; align-items:center; margin-top:6px;">
+            <button id="btnSend">Frage absenden</button>
+            <div id="sttStatus" class="small"></div>
+          </div>
         </div>
       </section>
 
@@ -43,28 +51,168 @@ function renderStudio(){
       </aside>
     </div>
   `;
-
   const audioEl = document.getElementById("voice");
   const unlock = startHoloAvatar(document.getElementById("avatarCanvas"), audioEl, PERSONA);
 
-  document.getElementById("btnTalk").onclick = async () => {
-    // Hier würdest du WebRTC Realtime starten. :contentReference[oaicite:9]{index=9}
-    await unlock();
-    alert("In dieser Vorlage ist Realtime noch nicht verdrahtet. Nächster Schritt: /api/realtime-token implementieren und WebRTC verbinden.");
-  };
+  const btnTalk = document.getElementById("btnTalk");
+  const btnFakeAnswer = document.getElementById("btnFakeAnswer");
+  const btnSend = document.getElementById("btnSend");
+  const questionInput = document.getElementById("questionInput");
+  const sttStatus = document.getElementById("sttStatus");
 
-  document.getElementById("btnFakeAnswer").onclick = async () => {
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  let recognizer = null;
+  let isRecording = false;
+  let micStream = null;
+  let finalTranscript = "";
+  const btnTalkLabel = btnTalk.textContent;
+
+  function setRecording(active) {
+    if (active) {
+      btnTalk.textContent = "Aufnahme... (loslassen)";
+      sttStatus.textContent = "Hoere zu...";
+    } else {
+      btnTalk.textContent = btnTalkLabel;
+      if (sttStatus.textContent === "Hoere zu...") sttStatus.textContent = "";
+    }
+  }
+
+  async function ensureMicPermission() {
+    if (!navigator.mediaDevices?.getUserMedia || micStream) return;
+    try {
+      micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    } catch (err) {
+      sttStatus.textContent = "Kein Mikrofonzugriff.";
+    }
+  }
+
+  function startRecognition() {
+    if (!recognizer || isRecording) return;
+    isRecording = true;
+    finalTranscript = questionInput.value.trim();
+    if (finalTranscript) finalTranscript += " ";
+    setRecording(true);
+    try {
+      recognizer.start();
+    } catch (err) {
+      setRecording(false);
+    }
+  }
+
+  function stopRecognition() {
+    if (!recognizer || !isRecording) return;
+    isRecording = false;
+    try {
+      recognizer.stop();
+    } catch (err) {
+      // ignore
+    }
+    setRecording(false);
+  }
+
+  if (SpeechRecognition) {
+    recognizer = new SpeechRecognition();
+    recognizer.lang = "de-DE";
+    recognizer.interimResults = true;
+    recognizer.continuous = true;
+    recognizer.onresult = (event) => {
+      let interim = "";
+      for (let i = event.resultIndex; i < event.results.length; i++) {
+        const result = event.results[i];
+        const text = result[0].transcript;
+        if (result.isFinal) {
+          finalTranscript += text + " ";
+        } else {
+          interim += text;
+        }
+      }
+      questionInput.value = (finalTranscript + interim).trim();
+    };
+    recognizer.onerror = (event) => {
+      sttStatus.textContent = `STT Fehler: ${event.error}`;
+    };
+    recognizer.onend = () => {
+      setRecording(false);
+      isRecording = false;
+    };
+  } else {
+    sttStatus.textContent = "Spracherkennung nicht verfuegbar. Bitte tippen.";
+  }
+
+  btnTalk.onpointerdown = async (e) => {
+    e.preventDefault();
     await unlock();
-    // Beliebige lokale Audiodatei einspielen (optional)
-    // Oder einfach stumm lassen – Avatar reagiert dann nur minimal.
+    await ensureMicPermission();
+    startRecognition();
+  };
+  btnTalk.onpointerup = stopRecognition;
+  btnTalk.onpointerleave = stopRecognition;
+  btnTalk.onpointercancel = stopRecognition;
+
+  function renderAnswer(data) {
+    const text = data?.text || "";
+    const sources = data?.sources || [];
+    const intent = data?.intent ? `<span class="pill">Modus: ${escapeHtml(data.intent)}</span>` : "";
+    const sourcePills = sources.map(id => `<span class="pill">Beleg: ${escapeHtml(id)}</span>`).join(" ");
     document.getElementById("subs").innerHTML = `
-      <div>"Ich wurde 1830 nach der Julirevolution zum Koenig der Franzosen."</div>
+      <div>${escapeHtml(text)}</div>
       <div style="margin-top:8px;">
-        <span class="pill">Beleg: LP-1830</span>
-        <span class="pill">Beleg: LP-JUL</span>
-        <span class="pill">Perspektive: Legitimisten sahen mich nicht als rechtmaessigen Koenig.</span>
+        ${sourcePills} ${intent}
       </div>
     `;
+  }
+
+  function renderError(message) {
+    document.getElementById("subs").innerHTML = `
+      <div>${escapeHtml(message)}</div>
+    `;
+  }
+
+  btnSend.onclick = async () => {
+    const query = questionInput.value.trim();
+    if (!query) {
+      sttStatus.textContent = "Bitte erst eine Frage eingeben.";
+      return;
+    }
+    await unlock();
+    btnSend.disabled = true;
+    sttStatus.textContent = "Sende Frage...";
+    try {
+      const res = await fetch(`${API}/api/ask`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ groupId: "group-a", query, persona: PERSONA })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Fehler beim Senden");
+      renderAnswer(data);
+    } catch (err) {
+      renderError(err.message || "Fehler beim Senden");
+    } finally {
+      btnSend.disabled = false;
+      if (sttStatus.textContent === "Sende Frage...") sttStatus.textContent = "";
+    }
+  };
+
+  btnFakeAnswer.onclick = async () => {
+    await unlock();
+    btnFakeAnswer.disabled = true;
+    sttStatus.textContent = "Hole Fake-Antwort...";
+    try {
+      const res = await fetch(`${API}/api/fake-answer`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ groupId: "group-a", persona: PERSONA })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Fehler bei Fake-Antwort");
+      renderAnswer(data);
+    } catch (err) {
+      renderError(err.message || "Fehler bei Fake-Antwort");
+    } finally {
+      btnFakeAnswer.disabled = false;
+      if (sttStatus.textContent === "Hole Fake-Antwort...") sttStatus.textContent = "";
+    }
   };
 
   loadCards("group-a");
