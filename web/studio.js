@@ -14,6 +14,7 @@ const app = document.getElementById("app");
 const toStudio = document.getElementById("toStudio");
 const toCards  = document.getElementById("toCards");
 const toggleHolo = document.getElementById("toggleHolo");
+const openSettings = document.getElementById("openSettings");
 
 let currentPersona = { ...DEFAULT_PERSONA };
 let currentView = "studio";
@@ -22,12 +23,23 @@ let lastUserMessage = "";
 let chatLogEl = null;
 let chatInputEl = null;
 const chatHistory = [];
+const cardsById = new Map();
+let avatarMenuEl = null;
+let personaToggleEl = null;
+let avatarMenuOpen = false;
+let avatarCache = new Map();
+let menuDocListener = null;
+let settingsPanelEl = null;
+let voiceSelectEl = null;
+let selectedVoiceName = localStorage.getItem("voice:name") || "";
 
 toStudio.onclick = showStudio;
 toCards.onclick = showCards;
 toggleHolo.onclick = () => document.body.classList.toggle("holo");
+if (openSettings) openSettings.onclick = toggleSettings;
 
 showStudio();
+initSettingsPanel();
 
 async function showStudio() {
   currentView = "studio";
@@ -39,6 +51,8 @@ function showCards() {
   currentView = "cards";
   chatLogEl = null;
   chatInputEl = null;
+  avatarMenuEl = null;
+  personaToggleEl = null;
   renderCards();
 }
 
@@ -49,9 +63,13 @@ function renderStudio(){
 
   app.innerHTML = `
     <div class="grid">
-      <section class="card">
-        <div class="small" style="margin-bottom:6px;">
-          Testhologramm: <b>${escapeHtml(currentPersona.name || DEFAULT_PERSONA.name)}</b> (${escapeHtml(currentPersona.years || DEFAULT_PERSONA.years)})
+      <section class="card" id="avatarSection">
+        <div id="personaToggle" class="persona-toggle" role="button" tabindex="0">
+          <div class="small">
+            Testhologramm: <b>${escapeHtml(currentPersona.name || DEFAULT_PERSONA.name)}</b> (${escapeHtml(currentPersona.years || DEFAULT_PERSONA.years)})
+            <span class="caret">▾</span>
+          </div>
+          <div id="avatarMenu" class="avatar-menu hidden"></div>
         </div>
         ${avatarBlock}
         <audio id="voice" class="audio-hidden"></audio>
@@ -90,6 +108,7 @@ function renderStudio(){
   const chatMic = document.getElementById("chatMic");
   const sttStatus = document.getElementById("sttStatus");
   renderChatHistory();
+  setupAvatarMenu();
 
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   let recognizer = null;
@@ -236,6 +255,9 @@ function renderStudio(){
 async function loadCards(groupId){
   const res = await fetch(`${API}/api/cards?groupId=${encodeURIComponent(groupId)}`);
   const data = await res.json();
+  (data.cards || []).forEach(card => {
+    if (card?.id) cardsById.set(card.id, card);
+  });
   const el = document.getElementById("cardsList");
   if (!el) return;
   el.innerHTML = (data.cards || []).slice(-10).map(c =>
@@ -396,6 +418,218 @@ function resolveAvatarUrl(url) {
   return `${API}${url}`;
 }
 
+function setupAvatarMenu() {
+  personaToggleEl = document.getElementById("personaToggle");
+  avatarMenuEl = document.getElementById("avatarMenu");
+  if (!personaToggleEl || !avatarMenuEl) return;
+
+  personaToggleEl.onclick = (event) => {
+    event.stopPropagation();
+    toggleAvatarMenu();
+  };
+  personaToggleEl.onkeydown = (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      toggleAvatarMenu();
+    }
+  };
+
+  avatarMenuEl.onclick = async (event) => {
+    const item = event.target.closest("[data-action]");
+    if (!item) return;
+    const action = item.dataset.action;
+    if (action === "select") {
+      const avatarId = item.dataset.avatarId;
+      const avatar = avatarCache.get(avatarId);
+      if (avatar) {
+        await setPersonaFromAvatar(avatar);
+      }
+      closeAvatarMenu();
+    }
+    if (action === "create") {
+      closeAvatarMenu();
+      showCards();
+      setTimeout(() => {
+        const section = document.getElementById("avatarSection");
+        if (section) section.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 50);
+    }
+  };
+
+  if (!menuDocListener) {
+    menuDocListener = (event) => {
+      if (!avatarMenuOpen || !avatarMenuEl || !personaToggleEl) return;
+      if (avatarMenuEl.contains(event.target) || personaToggleEl.contains(event.target)) return;
+      closeAvatarMenu();
+    };
+    document.addEventListener("click", menuDocListener);
+  }
+}
+
+function initSettingsPanel() {
+  if (settingsPanelEl) return;
+  settingsPanelEl = document.createElement("div");
+  settingsPanelEl.id = "settingsPanel";
+  settingsPanelEl.className = "settings-panel hidden";
+  settingsPanelEl.innerHTML = `
+    <div class="settings-header">
+      <h3>Einstellungen</h3>
+      <button id="settingsClose" class="settings-close">✕</button>
+    </div>
+    <div class="settings-field">
+      <label class="small" for="voiceSelect">Stimme fuer Vorlesen</label>
+      <select id="voiceSelect"></select>
+      <div class="settings-hint">Stimmen kommen vom Browser (m/w je nach System).</div>
+    </div>
+  `;
+  document.body.appendChild(settingsPanelEl);
+  voiceSelectEl = settingsPanelEl.querySelector("#voiceSelect");
+  const closeBtn = settingsPanelEl.querySelector("#settingsClose");
+  closeBtn.onclick = () => closeSettings();
+  voiceSelectEl.onchange = () => {
+    selectedVoiceName = voiceSelectEl.value;
+    localStorage.setItem("voice:name", selectedVoiceName);
+  };
+  refreshVoices();
+  if ("speechSynthesis" in window) {
+    window.speechSynthesis.onvoiceschanged = refreshVoices;
+  }
+  document.addEventListener("click", (event) => {
+    if (!settingsPanelEl || settingsPanelEl.classList.contains("hidden")) return;
+    if (settingsPanelEl.contains(event.target) || event.target === openSettings) return;
+    closeSettings();
+  });
+}
+
+function toggleSettings() {
+  if (!settingsPanelEl) return;
+  if (settingsPanelEl.classList.contains("hidden")) {
+    settingsPanelEl.classList.remove("hidden");
+    refreshVoices();
+  } else {
+    settingsPanelEl.classList.add("hidden");
+  }
+}
+
+function closeSettings() {
+  if (!settingsPanelEl) return;
+  settingsPanelEl.classList.add("hidden");
+}
+
+function refreshVoices() {
+  if (!voiceSelectEl || !("speechSynthesis" in window)) return;
+  const voices = window.speechSynthesis.getVoices();
+  if (!voices.length) return;
+  const sorted = [...voices].sort((a, b) => {
+    const aDe = a.lang?.toLowerCase().startsWith("de");
+    const bDe = b.lang?.toLowerCase().startsWith("de");
+    if (aDe !== bDe) return aDe ? -1 : 1;
+    return a.name.localeCompare(b.name);
+  });
+  const options = sorted.map(voice => {
+    const label = `${voice.name} (${voice.lang})`;
+    return `<option value="${escapeAttribute(voice.name)}">${escapeHtml(label)}</option>`;
+  }).join("");
+  voiceSelectEl.innerHTML = `<option value="">Systemstimme</option>${options}`;
+  if (selectedVoiceName) {
+    voiceSelectEl.value = selectedVoiceName;
+  } else {
+    const preferred = sorted.find(voice => voice.lang?.toLowerCase().startsWith("de"));
+    if (preferred) {
+      voiceSelectEl.value = preferred.name;
+      selectedVoiceName = preferred.name;
+      localStorage.setItem("voice:name", selectedVoiceName);
+    }
+  }
+}
+
+function getSelectedVoice() {
+  if (!("speechSynthesis" in window)) return null;
+  const voices = window.speechSynthesis.getVoices();
+  if (!voices.length) return null;
+  if (selectedVoiceName) {
+    const match = voices.find(voice => voice.name === selectedVoiceName);
+    if (match) return match;
+  }
+  return voices.find(voice => voice.lang?.toLowerCase().startsWith("de")) || voices[0] || null;
+}
+
+function toggleAvatarMenu() {
+  if (avatarMenuOpen) {
+    closeAvatarMenu();
+  } else {
+    openAvatarMenu();
+  }
+}
+
+async function openAvatarMenu() {
+  if (!avatarMenuEl) return;
+  avatarMenuOpen = true;
+  avatarMenuEl.classList.remove("hidden");
+  avatarMenuEl.innerHTML = `<div class="menu-loading">Lade Avatare...</div>`;
+  const avatars = await fetchAvatars();
+  avatarCache = new Map(avatars.map(avatar => [avatar.avatarId, avatar]));
+  renderAvatarMenu(avatars);
+}
+
+function closeAvatarMenu() {
+  if (!avatarMenuEl) return;
+  avatarMenuOpen = false;
+  avatarMenuEl.classList.add("hidden");
+}
+
+async function fetchAvatars() {
+  try {
+    const res = await fetch(`${API}/api/avatars`);
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || "Avatar-Liste nicht verfuegbar");
+    return data.avatars || [];
+  } catch {
+    return [];
+  }
+}
+
+function renderAvatarMenu(avatars) {
+  if (!avatarMenuEl) return;
+  if (!avatars.length) {
+    avatarMenuEl.innerHTML = `
+      <div class="menu-empty">Keine Avatare gefunden.</div>
+      <button class="menu-action" data-action="create">Neuen erstellen</button>
+    `;
+    return;
+  }
+  const items = avatars.map(avatar => {
+    const isActive = currentPersona.avatarUrl && avatar.avatarUrl === currentPersona.avatarUrl;
+    const label = escapeHtml(avatar.displayName || avatar.avatarId);
+    const activeClass = isActive ? "active" : "";
+    return `
+      <button class="menu-item ${activeClass}" data-action="select" data-avatar-id="${escapeAttribute(avatar.avatarId)}">
+        <img src="${escapeAttribute(resolveAvatarUrl(avatar.avatarUrl))}" alt="${label}"/>
+        <div class="menu-label">${label}</div>
+      </button>
+    `;
+  }).join("");
+  avatarMenuEl.innerHTML = `
+    <div class="menu-header">Avatar wechseln</div>
+    <div class="menu-list">${items}</div>
+    <button class="menu-action" data-action="create">Neuen erstellen</button>
+  `;
+}
+
+async function setPersonaFromAvatar(avatar) {
+  const persona = {
+    avatarUrl: avatar.avatarUrl,
+    provider: avatar.provider || "local",
+    style: avatar.style || "real",
+    avatarId: avatar.avatarId,
+    dataDir: avatar.dataDir,
+    updatedAt: Date.now()
+  };
+  await savePersona(PERSONA_GROUP_ID, persona);
+  currentPersona = { ...DEFAULT_PERSONA, ...persona };
+  renderStudio();
+}
+
 function getLocalPersona(groupId) {
   try {
     const raw = localStorage.getItem(`persona:${groupId}`);
@@ -499,7 +733,12 @@ function renderChatMessage(message) {
   const safeText = escapeHtml(message.text || "");
   let metaHtml = "";
   if (message.sources && message.sources.length) {
-    const sourcePills = message.sources.map(id => `<span class="pill">Beleg: ${escapeHtml(id)}</span>`).join(" ");
+    const sourcePills = message.sources.map(id => {
+      const card = cardsById.get(id);
+      const tooltip = card ? escapeAttribute(formatCardTooltip(card)) : "";
+      const tooltipAttr = tooltip ? ` data-tooltip="${tooltip}"` : "";
+      return `<span class="pill"${tooltipAttr}>Beleg: ${escapeHtml(id)}</span>`;
+    }).join(" ");
     metaHtml += `<div class="chat-meta">${sourcePills}</div>`;
   }
   if (message.intent) {
@@ -515,6 +754,8 @@ function speakText(text) {
   if (!text) return;
   if (!("speechSynthesis" in window)) return;
   const utter = new SpeechSynthesisUtterance(text);
+  const voice = getSelectedVoice();
+  if (voice) utter.voice = voice;
   utter.lang = "de-DE";
   utter.rate = 1;
   utter.pitch = 1;
@@ -527,5 +768,14 @@ function escapeHtml(s){
 }
 
 function escapeAttribute(s){
-  return escapeHtml(s);
+  return escapeHtml(s).replace(/\n/g, "&#10;");
+}
+
+function formatCardTooltip(card) {
+  if (!card) return "";
+  const parts = [];
+  if (card.title) parts.push(`Titel: ${card.title}`);
+  if (card.claim) parts.push(`Aussage: ${card.claim}`);
+  if (card.source) parts.push(`Quelle: ${card.source}`);
+  return parts.join("\n");
 }

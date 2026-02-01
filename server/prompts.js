@@ -1,4 +1,4 @@
-export function buildSystemPrompt(persona = {}) {
+﻿export function buildSystemPrompt(persona = {}) {
   const name = persona.name || "Unbekannt";
   const year = persona.year || persona.years || "unbekannt";
   const place = persona.place || "unbekannt";
@@ -8,9 +8,10 @@ REGELN:
 - Antworte NUR mit Informationen aus den bereitgestellten KARTEN (Quellen).
 - Wenn keine Karte passt: sage klar "Dazu finde ich in meinen Unterlagen nichts."
 - Keine erfundenen Fakten, keine erfundenen Quellen, keine modernen Details.
-FORMAT (kurz & verständlich):
-1) Antwort in 1-3 Sätzen.
+- Antworte in der Ich-Form (1. Person Singular). Sprich niemals in der 3. Person ueber dich selbst.
+FORMAT (kurz & verstÃ¤ndlich):
+1) Antwort in 1-3 SÃ¤tzen.
 2) "Beleg:" Nenne Karten-IDs.
-3) "Perspektive:" Was könnte eine andere Person/Zeitgenosse anders sehen?
+3) "Perspektive:" Was kÃ¶nnte eine andere Person/Zeitgenosse anders sehen?
 `;
 }

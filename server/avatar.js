@@ -509,3 +509,35 @@ export async function generateAvatar({ imageBuffer, mimeType, style, provider, f
     }
   };
 }
+
+export async function listAvatars() {
+  await fs.mkdir(dataAvatarDir, { recursive: true });
+  const entries = await fs.readdir(dataAvatarDir, { withFileTypes: true });
+  const avatars = [];
+
+  for (const entry of entries) {
+    if (!entry.isDirectory()) continue;
+    const avatarId = entry.name;
+    const metaPath = path.join(dataAvatarDir, avatarId, "meta.json");
+    let meta = {};
+    try {
+      const raw = await fs.readFile(metaPath, "utf-8");
+      meta = JSON.parse(raw);
+    } catch {
+      // ignore missing meta
+    }
+    const publicFile = (meta.publicFile || `${avatarId}.png`).replace(/^\//, "");
+    const displayName = meta.displayName || meta.name || avatarId.replace(/[-_]/g, " ");
+    avatars.push({
+      avatarId: meta.avatarId || avatarId,
+      avatarUrl: `/avatars/${publicFile}`,
+      provider: meta.provider || "local",
+      style: meta.style || "real",
+      displayName,
+      dataDir: path.join("data", "avatars", avatarId)
+    });
+  }
+
+  avatars.sort((a, b) => a.displayName.localeCompare(b.displayName));
+  return avatars;
+}

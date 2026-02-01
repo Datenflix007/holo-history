@@ -638,6 +638,393 @@
           "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
           "reliability": 4,
           "createdAt": 1769951376211
+        },
+        {
+          "id": "LP-FO-0101",
+          "title": "Eltern",
+          "claim": "Louis-Philippe war der älteste Sohn von Louis-Philippe II. Joseph von Orléans („Philippe Égalité“) und Louise Marie Adélaïde de Bourbon-Penthièvre.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (Louis-Philippe; vom Nutzer bereitgestellt)",
+          "reliability": 4,
+          "createdAt": 1769951370111
+        },
+        {
+          "id": "LP-FO-0102",
+          "title": "Dynastischer Hintergrund",
+          "claim": "Er stammte aus dem Haus Orléans, einer Linie der Bourbonen. Väterlicherseits leitete sich seine Abstammung vom Bruder Ludwigs XIV. ab; mütterlicherseits vom Comte de Toulouse, einem legitimierten Sohn Ludwigs XIV. und Madame de Montespan.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (Louis-Philippe; vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951370211
+        },
+        {
+          "id": "LP-FO-0103",
+          "title": "Abstammung vom „Sonnenkönig“",
+          "claim": "Da Louis-Philippe außerdem Nachkomme des Regenten Philipp II. von Orléans und Françoise Marie de Bourbon (legitimierte Tochter Ludwigs XIV.) war, galt er auch auf diesem Weg als direkter Nachfahre Ludwigs XIV.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (Louis-Philippe; vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951370311
+        },
+        {
+          "id": "LP-FO-0104",
+          "title": "Frühe Titel",
+          "claim": "Zunächst wurde er Herzog von Valois genannt; nachdem sein Vater Herzog von Orléans wurde, führte er die Titel Herzog von Chartres und Nemours.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (Louis-Philippe; vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951370411
+        }
+      ]
+    },
+
+    "julimonarchy_state_profile": {
+      "title": "Julimonarchie – Staatsprofil (1830–1848)",
+      "cards": [
+        {
+          "id": "JM-ST-1001",
+          "title": "Staatsbezeichnung und Zeitraum",
+          "claim": "Die Julimonarchie (monarchie de Juillet) bezeichnet das Königreich Frankreich von 1830 bis 1848 unter Louis-Philippe I.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (Julimonarchie; vom Nutzer bereitgestellt)",
+          "reliability": 4,
+          "createdAt": 1769951376311
+        },
+        {
+          "id": "JM-ST-1002",
+          "title": "Staatsform und Machtarchitektur",
+          "claim": "Die Julimonarchie war eine konstitutionelle Monarchie; sie wird als Mischform aus konstitutioneller und parlamentarischer Monarchie beschrieben: Die Kammern wurden gestärkt, der König behielt aber bedeutenden Einfluss auf Regierung und Außenpolitik.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (Julimonarchie; vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951376411
+        },
+        {
+          "id": "JM-ST-1003",
+          "title": "Amtssprache, Hauptstadt, Währung",
+          "claim": "Amtssprache war Französisch, Hauptstadt Paris, Währung der französische Franc.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (Julimonarchie; vom Nutzer bereitgestellt)",
+          "reliability": 4,
+          "createdAt": 1769951376511
+        },
+        {
+          "id": "JM-ST-1005",
+          "title": "Nationalhymne",
+          "claim": "Als Nationalhymne wird „La Parisienne“ genannt.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (Julimonarchie; vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951376711
+        },
+        {
+          "id": "JM-ST-1006",
+          "title": "Beginn und Ende (Datierungen im Artikel)",
+          "claim": "Als Errichtung wird der 26. Juli 1830 (Julirevolution) angegeben; als Endpunkt der 23. Februar 1848 (Februarrevolution).",
+          "quote": "",
+          "source": "Wikipedia-Auszug (Julimonarchie; vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951376811
+        },
+        {
+          "id": "JM-ST-1007",
+          "title": "Vorgänger und Nachfolger",
+          "claim": "Als Vorgängergebilde wird das „Königreich Frankreich und Navarra (Restauration)“ genannt; abgelöst wurde die Julimonarchie von der Zweiten Französischen Republik.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (Julimonarchie; vom Nutzer bereitgestellt)",
+          "reliability": 4,
+          "createdAt": 1769951376911
+        }
+      ]
+    },
+
+    "julimonarchy_history_causes": {
+      "title": "Julimonarchie – Ursachen, Verlauf, Ende",
+      "cards": [
+        {
+          "id": "JM-HI-1101",
+          "title": "„Les Trois Glorieuses“ und politische Folge",
+          "claim": "Die drei Tage der Julirevolution („Les Trois Glorieuses“) führten zum Sturz der bourbonischen Hauptlinie und zur erneuten Machtergreifung des Bürgertums in einem liberalen, konstitutionellen Königreich.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (Julimonarchie; vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951377011
+        },
+        {
+          "id": "JM-HI-1103",
+          "title": "Artikel 14 der Charte constitutionnelle",
+          "claim": "Karl X. versuchte mit Hilfe des Notverordnungsrechts gemäß Artikel 14 der Charte constitutionnelle das politische System in Richtung eines absoluten Königtums zu verändern; in Paris erhoben sich Handwerker, Arbeiter und Studenten und zwangen ihn zur Abdankung und Flucht nach England.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (Julimonarchie; vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951377211
+        },
+        {
+          "id": "JM-HI-1104",
+          "title": "Louis-Philippe als „Bürgerkönig“",
+          "claim": "Louis-Philippe aus dem Haus Orléans wurde wegen seiner vergleichsweise liberalen Haltung „Bürgerkönig“ genannt; seine Regentschaft wurde anfangs vom Großbürgertum gestützt.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (Julimonarchie; vom Nutzer bereitgestellt)",
+          "reliability": 4,
+          "createdAt": 1769951377311
+        },
+        {
+          "id": "JM-HI-1105",
+          "title": "Zensuswahlrecht als Konfliktpunkt",
+          "claim": "Das Zensuswahlrecht verstärkte die Unzufriedenheit, weil es dem Bürgertum einen seiner Stärke entsprechenden Einfluss bei der Gesetzgebung verwehrte.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (Julimonarchie; vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951377411
+        },
+        {
+          "id": "JM-HI-1106",
+          "title": "Krise 1847 und Weg zur Revolution",
+          "claim": "Eine Agrar- und Handelskrise 1847 führte zu Unruhen und trug zur Februarrevolution 1848 bei.",
+          "quote": "",
+          "source": "Wikipedia-Auszüge (Julimonarchie + Februarrevolution 1848; vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951377511
+        },
+        {
+          "id": "JM-HI-1107",
+          "title": "Ende der Julimonarchie",
+          "claim": "Die Julimonarchie endete mit der Etablierung der Zweiten Französischen Republik.",
+          "quote": "",
+          "source": "Wikipedia-Auszüge (Julimonarchie + Februarrevolution 1848; vom Nutzer bereitgestellt)",
+          "reliability": 4,
+          "createdAt": 1769951377611
+        }
+      ]
+    },
+
+    "february_revolution_1848": {
+      "title": "Februarrevolution 1848",
+      "cards": [
+        {
+          "id": "FR48-OV-2001",
+          "title": "Kernereignis und Ergebnis (24. Februar 1848)",
+          "claim": "Die bürgerlich-demokratische Februarrevolution 1848 in Frankreich beendete am 24. Februar 1848 die Herrschaft Louis-Philippes und führte zur Ausrufung der Zweiten Französischen Republik.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (Februarrevolution 1848; vom Nutzer bereitgestellt)",
+          "reliability": 4,
+          "createdAt": 1769951378411
+        },
+        {
+          "id": "FR-Kinderzeitmaschine",
+          "title": "Die Kinderzeitmaschine – Februarrevolution 1848",
+          "claim": "Die VorgeschichteSeit 1830 herrschte in Frankreich der so genannte \"Bürgerkönig\" Louis-Philippe von Orléans. Während ihn am Anfang seiner Regierungszeit noch liberale Ideen prägten, ging er dazu über, dem Adel wieder verstärkt Rechte zu verleihen. So kam die Politik des Königs in den Kreisen der Arbeiter, aber auch der Bürger, so gar nicht an. Er führte auch das Zensuswahlrecht wieder ein, was viele Menschen empörte. Die Februarrevolution in Frankreich Fast 60 Jahre nachdem die Bastille während der Französischen Revolution gestürmt worden war, kam es in Paris am 24. Februar 1848 wieder zur Erstürmung eines Gebäudes. Dieses Mal war es das Chateau d`Eau, der französischen Regierungssitz. Diese Revolution ging unter der Bezeichnung Februarrevolution in die Geschichte ein. Die Folge war das Abdanken des so genannten Bürgerkönigs Louis-Philippe. Auch wurde die zweite französische Republik ausgerufen.Aufstand der Arbeiter als weitere Folge Im Juni kam es dann zu einem Aufstand der Arbeiter, der aber niedergeworfen wurde. Das Bürgertum hatte große Angst vor der \"roten Gefahr\". Trotzdem schwappte der Gedanke der Revolution in Frankreich auch auf Deutschland über. So hatte die Februarrevolution in Frankreich Weitreichende Folgen für die Revolutionen in ganz Europa. Die Februarrevolution in Frankreich ergriff weitere Staaten Der Ausbruch der so genannten Märzrevolutionen in Deutschland, die zunächst den Westen und Süden ergriff und sich dann in allen Staaten des Deutschen Bundes ausbreitete, war ebenso der Revolution in Frankreich im Februar 1848 geschuldet.",
+          "quote": "",
+          "source": "Die Kinderzeitmaschine (vom Nutzer bereitgestellt)",
+          "reliability": 4,
+          "createdAt": 1769951380811
+        },
+        {
+          "id": "FR48-EU-2002",
+          "title": "Europäische Einordnung: Impuls für 1848/49",
+          "claim": "Die Ereignisse der Februarrevolution wirkten als Funke für die anschließende Märzrevolution in Mitteleuropa, besonders in den Staaten des Deutschen Bundes. Im weiteren Sinne können die parallelen Entwicklungen als „Revolution(en) von 1848/1849“ verstanden werden.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (Februarrevolution 1848; vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951378511
+        },
+        {
+          "id": "FR48-EU-2003",
+          "title": "Schweiz-Kontext (1847)",
+          "claim": "Der Artikel stellt einen Zusammenhang her, in dem Frankreichs Rolle im Schweizer Sonderbundskrieg 1847 die innenpolitische Gärung befördert habe.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (Februarrevolution 1848; vom Nutzer bereitgestellt)",
+          "reliability": 2,
+          "createdAt": 1769951378611
+        },
+        {
+          "id": "FR48-PR-2010",
+          "title": "Vorgeschichte: Abkehr vom Liberalismus und Skandale",
+          "claim": "Louis-Philippes Regierungszeit (Julimonarchie) wird als Phase zunehmender Abkehr vom Liberalismus, wachsender Skandale und Korruptionsfälle beschrieben sowie einer stärkeren Hinwendung zur von Österreich dominierten Heiligen Allianz.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (Februarrevolution 1848; vom Nutzer bereitgestellt)",
+          "reliability": 2,
+          "createdAt": 1769951378711
+        },
+        {
+          "id": "FR48-PR-2011",
+          "title": "Vorgeschichte: Metternich und Restauration",
+          "claim": "Die Heilige Allianz wird im Artikel mit der reaktionären Restauration verknüpft, die (seit dem Wiener Kongress 1815) eine Rückkehr zu vorrevolutionären Verhältnissen, Adelsvorherrschaft und Privilegienwiedergewinnung anstrebte; als maßgeblich wird Fürst von Metternich genannt.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (Februarrevolution 1848; vom Nutzer bereitgestellt)",
+          "reliability": 2,
+          "createdAt": 1769951378811
+        },
+        {
+          "id": "FR48-PR-2012",
+          "title": "Zensuswahlrecht und bürgerlicher Zorn",
+          "claim": "Ein zentraler Konfliktpunkt war das Zensuswahlrecht, das dem Bürgertum – obwohl es Louis-Philippe 1830 mit an die Macht gebracht hatte – keinen seinem Gewicht entsprechenden Einfluss bei der Gesetzgebung einräumte.",
+          "quote": "",
+          "source": "Wikipedia-Auszüge (Julimonarchie + Februarrevolution 1848; vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951378911
+        },
+        {
+          "id": "FR48-PR-2013",
+          "title": "Soziale Lage und Krise 1847",
+          "claim": "Auch in der Arbeiterschaft wuchs Unzufriedenheit; eine Agrar- und Handelskrise 1847 verschärfte die soziale Lage und förderte revolutionäre Stimmung.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (Februarrevolution 1848; vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951379011
+        },
+        {
+          "id": "FR48-TR-2020",
+          "title": "Auslöser: Verbot eines Reformbanketts (ab 21. Februar 1848)",
+          "claim": "Nachdem der König ein geplantes Bankett zur Reform des Wahlrechts verboten hatte, kam es ab dem 21. Februar 1848 in Paris zu Protesten, die sich rasch zu Unruhen und einer revolutionären Entwicklung ausweiteten.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (Februarrevolution 1848; vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951379111
+        },
+        {
+          "id": "FR48-TR-2021",
+          "title": "Vereinigung von Arbeitern und Bürgern (kurzzeitig)",
+          "claim": "Zeitweise kam es in der frühen Phase zu einer Vereinigung von Arbeitern und Bürgern.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (Februarrevolution 1848; vom Nutzer bereitgestellt)",
+          "reliability": 2,
+          "createdAt": 1769951379211
+        },
+        {
+          "id": "FR48-TR-2022",
+          "title": "Barrikadenkämpfe (23.–24. Februar 1848)",
+          "claim": "Am 23. und 24. Februar 1848 kam es in Paris zu heftigen Straßen- und Barrikadenkämpfen zwischen Aufständischen und königlichen Truppen.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (Februarrevolution 1848; vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951379311
+        },
+        {
+          "id": "FR48-TR-2023",
+          "title": "Rücktritt Guizots und Abdankung des Königs",
+          "claim": "Am 24. Februar 1848 trat der Ministerpräsident François Guizot zurück; kurz darauf dankte Louis-Philippe ab, floh nach England und ging ins Exil.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (Februarrevolution 1848; vom Nutzer bereitgestellt)",
+          "reliability": 4,
+          "createdAt": 1769951379411
+        },
+        {
+          "id": "FR48-TR-2024",
+          "title": "Provisorische Regierung und Republik",
+          "claim": "Nach der Abdankung wurde eine provisorische Regierung eingesetzt (genannt wird Alphonse de Lamartine) und die Republik ausgerufen.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (Februarrevolution 1848; vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951379511
+        },
+        {
+          "id": "FR48-GV-2030",
+          "title": "Erste Revolutionsregierung: heterogenes Kabinett",
+          "claim": "Die erste Revolutionsregierung wird als heterogener elfköpfiger Ministerrat beschrieben, in dem Linke (z. B. Louis Blanc), Liberale/Demokraten (z. B. Außenminister Lamartine) und konservative Rechte vertreten waren.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (Februarrevolution 1848; vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951379611
+        },
+        {
+          "id": "FR48-GV-2031",
+          "title": "Reformen: Sklaverei, Pressefreiheit, Wahlrecht, Arbeitsrecht",
+          "claim": "Die Regierung beschloss u. a. die Abschaffung der Sklaverei in den Kolonien, die Abschaffung der Todesstrafe für politische Delikte, Pressefreiheit, allgemeines Männerwahlrecht sowie die Anerkennung des Rechts auf Arbeit.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (Februarrevolution 1848; vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951379711
+        },
+        {
+          "id": "FR48-GV-2032",
+          "title": "Instabilität und Zerfall der Einheitsfront",
+          "claim": "Die revolutionäre Einheitsfront hielt nicht lange: Die unterschiedlichen sozialen, politischen und wirtschaftlichen Interessen ließen Bürgertum und Arbeiterschaft bald wieder auseinanderdriften; die erste Regierung konnte sich nur wenige Monate halten.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (Februarrevolution 1848; vom Nutzer bereitgestellt)",
+          "reliability": 2,
+          "createdAt": 1769951379811
+        },
+        {
+          "id": "FR48-SC-2040",
+          "title": "Antisemitische Ausschreitungen und „Judenrumpel“",
+          "claim": "Im Zusammenhang der Unruhen kam es zu antisemitischen Ausschreitungen; im Frühling 1848 ereignete sich im Elsass das „Judenrumpel“ mit Plünderungen, Brandstiftungen sowie Verletzten und Toten. Bern und Basel-Stadt boten Schutz; das Schweizer Militär wurde zur Absicherung herangezogen.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (Februarrevolution 1848; vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951379911
+        },
+        {
+          "id": "FR48-EL-2050",
+          "title": "Wahl zur Nationalversammlung (23. April 1848)",
+          "claim": "Am 23. April 1848 fand die Wahl zu einer verfassunggebenden Nationalversammlung statt; laut Artikel unterlag die Linke, während Konservative und gemäßigte Liberale siegreich waren.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (Februarrevolution 1848; vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951380011
+        },
+        {
+          "id": "FR48-EL-2051",
+          "title": "Juniaufstand (22.–26. Juni 1848)",
+          "claim": "Vom 22. bis 26. Juni 1848 kam es zum Juniaufstand (Journées de Juin) nach der Schließung der Nationalwerkstätten; der Aufstand wurde durch Armee und Nationalgarde unter Louis-Eugène Cavaignac blutig niedergeschlagen.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (Februarrevolution 1848; vom Nutzer bereitgestellt)",
+          "reliability": 4,
+          "createdAt": 1769951380111
+        },
+        {
+          "id": "FR48-EL-2052",
+          "title": "Opferzahlen und Repression nach dem Juniaufstand",
+          "claim": "Der Artikel nennt etwa 1500 gefallene Soldaten/Nationalgardisten (darunter drei Generäle) und schätzt die Zahl getöteter Arbeiter auf etwa 5000; zudem wurden 25.000 festgenommen und 11.000 zu Gefängnis oder Deportation verurteilt, darunter mehrere tausend nach Algerien.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (Februarrevolution 1848; vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951380211
+        },
+        {
+          "id": "FR48-EL-2053",
+          "title": "Exil von Louis Blanc",
+          "claim": "Louis Blanc, der sich für den Erhalt der Nationalwerkstätten eingesetzt hatte, floh nach England und kehrte laut Artikel erst 1870 nach Frankreich zurück.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (Februarrevolution 1848; vom Nutzer bereitgestellt)",
+          "reliability": 2,
+          "createdAt": 1769951380311
+        },
+        {
+          "id": "FR48-EL-2054",
+          "title": "Konterrevolution und Spaltung der Revolution",
+          "claim": "Die Niederschlagung des Juniaufstands wird als Auslöser einer reaktionären Konterrevolution beschrieben und markierte historisch die Abspaltung des revolutionären Proletariats vom Bürgertum; der Artikel verweist in diesem Zusammenhang auch auf Deutungen bei Karl Marx und Sozialisten.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (Februarrevolution 1848; vom Nutzer bereitgestellt)",
+          "reliability": 2,
+          "createdAt": 1769951380411
+        },
+        {
+          "id": "FR48-CO-2060",
+          "title": "Verfassung (4. November 1848)",
+          "claim": "Am 4. November 1848 verabschiedete die Nationalversammlung eine Verfassung, die u. a. die Wahl eines Staatspräsidenten vorsah.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (Februarrevolution 1848; vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951380511
+        },
+        {
+          "id": "FR48-CO-2061",
+          "title": "Wahl Louis Napoléons (10. Dezember 1848)",
+          "claim": "Louis Napoléon Bonaparte wurde am 10. Dezember 1848 mit 75 % der Stimmen zum Staatspräsidenten gewählt; der Artikel nennt ihn als Neffen Napoleons und erinnert an seine Putschversuche 1836 und 1840.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (Februarrevolution 1848; vom Nutzer bereitgestellt)",
+          "reliability": 4,
+          "createdAt": 1769951380611
+        },
+        {
+          "id": "FR48-CO-2062",
+          "title": "Staatsstreich 1851 und Zweites Kaiserreich",
+          "claim": "Der Artikel beschreibt, dass die Republik nur drei Jahre hielt: Louis Napoléon bereitete den Staatsstreich vom 2. Dezember 1851 vor und ließ sich ein Jahr später als Kaiser Napoleon III. ausrufen, womit das Zweite Kaiserreich entstand.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (Februarrevolution 1848; vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951380711
         }
       ]
     },

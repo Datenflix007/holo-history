@@ -4,7 +4,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import multer from "multer";
 import { initDb, addCard, listCards, topKCards, getPersona, setPersona } from "./storage.js";
-import { generateAvatar } from "./avatar.js";
+import { generateAvatar, listAvatars } from "./avatar.js";
 import { config } from "./config.js";
 import { buildSystemPrompt } from "./prompts.js";
 import { chatCompletion } from "./llm.js";
@@ -106,6 +106,15 @@ app.post("/api/avatar", handleUpload, async (req,res) => {
     res.json({ ok: true, ...result });
   } catch (err) {
     res.status(500).json({ error: err.message || "avatar error" });
+  }
+});
+
+app.get("/api/avatars", async (req, res) => {
+  try {
+    const avatars = await listAvatars();
+    res.json({ avatars });
+  } catch (err) {
+    res.status(500).json({ error: err.message || "avatar list error" });
   }
 });
 
