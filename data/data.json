@@ -1,0 +1,657 @@
+{
+  "meta": {
+    "subject": "Louis-Philippe I.",
+    "language": "de",
+    "sourceNote": "Inhalte basieren auf dem vom Nutzer bereitgestellten Wikipedia-Auszug (ohne zusätzliche Recherche).",
+    "schemaVersion": "1.1"
+  },
+  "groups": {
+    "overview": {
+      "title": "Überblick",
+      "cards": [
+        {
+          "id": "LP-OV-0001",
+          "title": "Kurzprofil",
+          "claim": "Louis-Philippe I. (6. Oktober 1773, Paris – 26. August 1850, Claremont House bei Esher/Surrey) war von 1830 bis 1848 König während der Julimonarchie. Er wurde auch „Bürgerkönig“ genannt und trug offiziell den Titel „König der Franzosen“.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 4,
+          "createdAt": 1769951369811
+        },
+        {
+          "id": "LP-OV-0002",
+          "title": "Amtstitel und Bedeutung",
+          "claim": "Der Titel „König der Franzosen“ markierte eine Abkehr vom traditionellen dynastischen Titel „König von Frankreich und Navarra“ (geführt seit Heinrich IV.) und sollte stärker auf Volkssouveränität und Verfassungsbindung verweisen.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951369911
+        },
+        {
+          "id": "LP-OV-0003",
+          "title": "Namensgebrauch im Deutschen",
+          "claim": "Im deutschen Sprachraum wird meist der französische Name „Louis-Philippe“ verwendet; auch „Louis Philippe“ (ohne Bindestrich) ist üblich. Die deutsche Namensform „Ludwig Philipp“ wird nur selten gebraucht.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 4,
+          "createdAt": 1769951370011
+        }
+      ]
+    },
+    "origin_family": {
+      "title": "Herkunft und Familie",
+      "cards": [
+        {
+          "id": "LP-FO-0101",
+          "title": "Eltern",
+          "claim": "Louis-Philippe war der älteste Sohn von Louis-Philippe II. Joseph von Orléans (bekannt als „Philippe Égalité“) und Louise Marie Adélaïde de Bourbon-Penthièvre.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 4,
+          "createdAt": 1769951370111
+        },
+        {
+          "id": "LP-FO-0102",
+          "title": "Dynastischer Hintergrund",
+          "claim": "Er stammte aus dem Haus Orléans, einer Linie der Bourbonen. Väterlicherseits leitete sich seine Abstammung vom Bruder Ludwigs XIV. ab; mütterlicherseits vom Comte de Toulouse, einem legitimierten Sohn Ludwigs XIV. und Madame de Montespan.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951370211
+        },
+        {
+          "id": "LP-FO-0103",
+          "title": "Abstammung vom „Sonnenkönig“",
+          "claim": "Da Louis-Philippe außerdem Nachkomme des Regenten Philipp II. von Orléans und Françoise Marie de Bourbon (legitimierte Tochter Ludwigs XIV.) war, galt er auch auf diesem Weg als direkter Nachfahre Ludwigs XIV.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951370311
+        },
+        {
+          "id": "LP-FO-0104",
+          "title": "Frühe Titel",
+          "claim": "Zunächst wurde er Herzog von Valois genannt; nachdem sein Vater Herzog von Orléans wurde, führte er die Titel Herzog von Chartres und Nemours.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951370411
+        }
+      ]
+    },
+    "revolution_military": {
+      "title": "Französische Revolution und Militärzeit",
+      "cards": [
+        {
+          "id": "LP-RV-0201",
+          "title": "Haltung zur Revolution (ab 1789)",
+          "claim": "Beim Ausbruch der Französischen Revolution war Louis-Philippe 16 Jahre alt und begrüßte die Revolution – ähnlich wie sein Vater – begeistert.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951370511
+        },
+        {
+          "id": "LP-RV-0202",
+          "title": "Jakobinerklub (1790)",
+          "claim": "1790 trat Louis-Philippe dem Jakobinerklub bei, der damals noch von gemäßigten Kräften geprägt war, und verfolgte häufig die Debatten der Nationalversammlung.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951370611
+        },
+        {
+          "id": "LP-RV-0203",
+          "title": "Dienst in der Nordarmee (1792)",
+          "claim": "1792 erhielt der 18-Jährige einen Offiziersposten in der Nordarmee und nahm am 20. September 1792 an der Kanonade bei Valmy teil.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 4,
+          "createdAt": 1769951370711
+        },
+        {
+          "id": "LP-RV-0204",
+          "title": "Republik und politisches Auftreten",
+          "claim": "Nach der Proklamation der Republik (21. September 1792) gab sich Louis-Philippe – wie sein Vater mit dem Beinamen „Égalité“ – als eifriger Anhänger der neuen Ordnung.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951370811
+        },
+        {
+          "id": "LP-RV-0205",
+          "title": "Jemappes (6. November 1792)",
+          "claim": "Unter General Dumouriez diente Louis-Philippe in den Niederlanden und spielte am 6. November 1792 eine wichtige Rolle beim französischen Sieg in der Schlacht bei Jemappes.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951370911
+        },
+        {
+          "id": "LP-RV-0206",
+          "title": "Neerwinden (18. März 1793)",
+          "claim": "Am 18. März 1793 erlebte er die schwere Niederlage der französischen Truppen in der Schlacht bei Neerwinden.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951371011
+        }
+      ]
+    },
+    "exile_1793_1814": {
+      "title": "Exil (1793–1814)",
+      "cards": [
+        {
+          "id": "LP-EX-0301",
+          "title": "Flucht mit Dumouriez (5. April 1793)",
+          "claim": "Als Komplize von Dumouriez’ Plan, nach Paris zu marschieren und die Republik zu stürzen, floh Louis-Philippe am 5. April 1793 über österreichische Linien nach Mons.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951371111
+        },
+        {
+          "id": "LP-EX-0302",
+          "title": "21 Jahre nicht in Frankreich",
+          "claim": "Nach der Flucht sollte Louis-Philippe insgesamt 21 Jahre lang nicht nach Frankreich zurückkehren.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 4,
+          "createdAt": 1769951371211
+        },
+        {
+          "id": "LP-EX-0303",
+          "title": "Schweiz: Deckname „Corby“ (1793)",
+          "claim": "Zunächst ging Louis-Philippe mit seiner Schwester und Madame de Genlis in die Eidgenossenschaft und lebte unter dem Namen „Corby“ in Bremgarten.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951371311
+        },
+        {
+          "id": "LP-EX-0304",
+          "title": "Reichenau: Lehrer unter „Chabod“ (ab Nov. 1793)",
+          "claim": "Um Konflikte mit Emigranten zu vermeiden, unterrichtete er ab November 1793 unter dem Namen „Chabod“ im Erziehungsinstitut Reichenau (Graubünden), das im Schloss Reichenau eingerichtet war.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951371411
+        },
+        {
+          "id": "LP-EX-0305",
+          "title": "Tod des Vaters und neue Stellung",
+          "claim": "Zeitgleich wurde sein Vater hingerichtet. Durch dessen Tod wurde Louis-Philippe Herzog von Orléans und rückte in den Fokus der Orléanisten-Partei.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951371511
+        },
+        {
+          "id": "LP-EX-0306",
+          "title": "Hamburg & Friedrichstadt (1795–1796)",
+          "claim": "1795 war er in Hamburg mit Dumouriez; 1796 arbeitete er unter dem Decknamen „De Vries“ einige Monate als Hauslehrer in Friedrichstadt.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951371611
+        },
+        {
+          "id": "LP-EX-0307",
+          "title": "USA-Reise (1797): Ankunft in Philadelphia",
+          "claim": "Im Februar 1797 traf Louis-Philippe in Philadelphia ein, nachdem seine Brüder zuvor dorthin gelangt waren; gemeinsam bereisten sie Neuengland, die Großen Seen und den Mississippi.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951371711
+        },
+        {
+          "id": "LP-EX-0308",
+          "title": "Aufenthalte in New York und Boston",
+          "claim": "Während der USA-Zeit hielt er sich auch in New York City auf und in Boston, wo er als Französischlehrer wirkte.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 2,
+          "createdAt": 1769951371811
+        },
+        {
+          "id": "LP-EX-0309",
+          "title": "Begegnungen mit US-Eliten",
+          "claim": "Er lernte führende Politiker und Persönlichkeiten kennen, darunter George Washington, Alexander Hamilton, John Jay und George Clinton.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 2,
+          "createdAt": 1769951371911
+        },
+        {
+          "id": "LP-EX-0310",
+          "title": "Kuba-Zwischenstation und Rückweg nach Europa",
+          "claim": "Eine geplante Rückreise über New Orleans, Havanna und Spanien scheiterte; die Brüder saßen etwa ein Jahr auf Kuba fest, wurden ausgewiesen und gelangten über Bahamas und Nova Scotia nach New York, von wo sie nach Europa übersetzten.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 2,
+          "createdAt": 1769951372011
+        },
+        {
+          "id": "LP-EX-0311",
+          "title": "England: Twickenham (ab Jan. 1800)",
+          "claim": "Im Januar 1800 landeten die Brüder in England und ließen sich in Twickenham bei London nieder; in Frankreich hatte Napoleon seine Macht zu dieser Zeit bereits gefestigt.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951372111
+        },
+        {
+          "id": "LP-EX-0312",
+          "title": "Versöhnung mit Ludwig XVIII. (über Artois)",
+          "claim": "Nach der Ankunft nahm Louis-Philippe Kontakt mit dem Grafen von Artois auf und versöhnte sich über dessen Vermittlung mit dem exilierten Thronprätendenten Ludwig XVIII.; zugleich lehnte er es ab, gegen Frankreich in der Armee von Condé zu kämpfen.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 2,
+          "createdAt": 1769951372211
+        },
+        {
+          "id": "LP-EX-0313",
+          "title": "Todesfälle der Brüder (1807–1808)",
+          "claim": "Antoine Philippe starb 1807 in Hampshire an Tuberkulose; Louis Charles wurde 1808 nach Malta gebracht und starb dort am 29. Mai 1808 ebenfalls an Tuberkulose.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951372311
+        },
+        {
+          "id": "LP-EX-0314",
+          "title": "Heirat in Palermo (25. November 1809)",
+          "claim": "Auf Einladung von Ferdinand III. von Neapel und Sizilien reiste Louis-Philippe nach Palermo und heiratete am 25. November 1809 Prinzessin Maria Amalia, die Tochter des Königs.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 4,
+          "createdAt": 1769951372411
+        },
+        {
+          "id": "LP-EX-0315",
+          "title": "Leben in Sizilien (bis 1814)",
+          "claim": "Das Ehepaar blieb bis 1814 in Palermo; dort kamen auch die ersten drei Kinder zur Welt. Sie wohnten im Palais d’Orléans gegenüber dem Normannenpalast, während Neapel unter napoleonischer Herrschaft stand.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 2,
+          "createdAt": 1769951372511
+        }
+      ]
+    },
+    "return_restoration": {
+      "title": "Rückkehr und Restauration",
+      "cards": [
+        {
+          "id": "LP-RR-0401",
+          "title": "Rückkehr nach Frankreich (nach Napoleons Abdankung)",
+          "claim": "Nach Napoleons Abdankung kehrte Louis-Philippe von Sizilien nach Frankreich zurück und wurde von Ludwig XVIII. freundlich empfangen; sein militärischer Rang wurde bestätigt, und er wurde zum Generaloberst der Husaren ernannt.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951372611
+        },
+        {
+          "id": "LP-RR-0402",
+          "title": "Wiedererlangung von Besitz und Reichtum",
+          "claim": "Die Besitzungen der Orléans wurden ihm – soweit nicht verkauft – zurückgegeben. Er wurde sehr reich und vergrößerte sein Vermögen durch Geschäftssinn; nach dem Tod seiner Mutter (1821) wurde sein Vermögen auf rund 8 Millionen Francs geschätzt.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 2,
+          "createdAt": 1769951372711
+        },
+        {
+          "id": "LP-RR-0403",
+          "title": "Politische Verdächtigungen und Exil 1815–1817",
+          "claim": "In der angespannten Atmosphäre der Restauration geriet er wegen Sympathien für die liberale Opposition unter Verdacht; sein Verhalten in der Pairskammer im Herbst 1815 führte zu zwei Jahren Exil in Twickenham.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 2,
+          "createdAt": 1769951372811
+        },
+        {
+          "id": "LP-RR-0404",
+          "title": "Bürgerliche Selbstdarstellung und Palais Royal",
+          "claim": "Er suchte Popularität, indem er seine Kinder „en bourgeois“ in öffentlichen Schulen unterrichten ließ. Das Palais Royal wurde zum Treffpunkt bürgerlicher Führungsfiguren – eine wichtige Voraussetzung für seinen späteren Aufstieg.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951372911
+        }
+      ]
+    },
+    "path_to_throne_1830": {
+      "title": "Weg auf den Thron (Julirevolution 1830)",
+      "cards": [
+        {
+          "id": "LP-TH-0501",
+          "title": "Strategie während der Julitage",
+          "claim": "Während der Julirevolution 1830 hielt sich Louis-Philippe zunächst im Hintergrund (u. a. in Neuilly und Le Raincy), während in Paris die politische Entscheidung reifte, eine Republik zu vermeiden.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 2,
+          "createdAt": 1769951373011
+        },
+        {
+          "id": "LP-TH-0502",
+          "title": "Proklamation zugunsten einer konstitutionellen Monarchie",
+          "claim": "Thiers argumentierte öffentlich, eine Republik bringe Frankreich in Konflikt mit Europa; der Herzog von Orléans sei den Revolutionsprinzipien verpflichtet, habe die Trikolore getragen und könne als „Bürgerkönig“ akzeptiert werden.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 2,
+          "createdAt": 1769951373111
+        },
+        {
+          "id": "LP-TH-0503",
+          "title": "General-Lieutenant des Reichs (30. Juli 1830)",
+          "claim": "Am 30. Juli 1830 kehrte er nach Paris zurück und wurde von Abgeordneten zum Generalleutnant des Reichs gewählt.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951373211
+        },
+        {
+          "id": "LP-TH-0504",
+          "title": "Symbolische Anerkennung im Hôtel de Ville",
+          "claim": "Am Folgetag trat er mit Trikolore-Schal im Hôtel de Ville auf und wurde von La Fayette öffentlich umarmt – als Zeichen, dass eine republikanische Lösung als nicht durchsetzbar galt und eine volksbasierte Monarchie akzeptiert wurde.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 2,
+          "createdAt": 1769951373311
+        },
+        {
+          "id": "LP-TH-0505",
+          "title": "Absetzung Karls X. und Ausrufung (7. August 1830)",
+          "claim": "Nachdem Karl X. abgedankt hatte, erklärte die Kammer am 7. August 1830 Karl X. für abgesetzt und proklamierte Louis-Philippe als „König der Franzosen, von Gottes Gnaden und dem Willen des Volkes“.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951373411
+        }
+      ]
+    },
+    "reign_1830_1848": {
+      "title": "Regierung und Gesellschaft (1830–1848)",
+      "cards": [
+        {
+          "id": "LP-RG-0601",
+          "title": "Julimonarchie: verfassungsnah und bürgerlich geprägt",
+          "claim": "Die Herrschaft Louis-Philippes wird als Julimonarchie beschrieben: konstitutionell gerahmt und politisch stark auf das Bürgertum gestützt.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951373511
+        },
+        {
+          "id": "LP-RG-0602",
+          "title": "Wirtschaftlicher Boom und Eisenbahnbau",
+          "claim": "Unter seiner Regierung kam es zu starkem Aufschwung von Bürgertum und Wirtschaft, u. a. durch beginnenden Eisenbahnbau, Industrialisierung sowie Expansion von Kohle- und Stahlproduktion.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951373611
+        },
+        {
+          "id": "LP-RG-0603",
+          "title": "Finanzaristokratie und Bankhäuser",
+          "claim": "Große Bankhäuser (u. a. Rothschild und Laffitte) finanzierten den Boom und profitierten davon; Karl Marx bezeichnete die Zeit als „Herrschaft der Finanzaristokratie“.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 2,
+          "createdAt": 1769951373711
+        },
+        {
+          "id": "LP-RG-0604",
+          "title": "Paris: Baukonjunktur und Großprojekte",
+          "claim": "In Paris entstand eine Baukonjunktur, getragen von öffentlichen Aufträgen; u. a. wurden Arbeiten an La Madeleine abgeschlossen und 1836 der Obelisk von Luxor auf der Place de la Concorde aufgestellt.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951373811
+        },
+        {
+          "id": "LP-RG-0605",
+          "title": "Befestigungen um Paris (forts détachés)",
+          "claim": "Ein umfangreiches Befestigungsprogramm mit vorgelagerten Forts wurde beschlossen; es wurde auch kritisiert, weil es als Instrument zur Niederschlagung innerer Unruhen verstanden werden konnte.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 2,
+          "createdAt": 1769951373911
+        },
+        {
+          "id": "LP-RG-0606",
+          "title": "Soziale Spannungen und „Enrichissez-vous“",
+          "claim": "Als zynisches Motto der Epoche gelten häufig die Worte „Enrichissez-vous“ („Bereichert Euch“). Zugleich entstand durch Industrialisierung ein Proletariat; soziale Probleme wurden in der Ära Louis-Philippes weitgehend ignoriert.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 2,
+          "createdAt": 1769951374011
+        },
+        {
+          "id": "LP-RG-0607",
+          "title": "Aufstände der Seidenweber in Lyon (ab 1831)",
+          "claim": "Die sozialen Konflikte führten u. a. 1831 und in den Folgejahren wiederholt zu Aufständen der Seidenweber in Lyon.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951374111
+        },
+        {
+          "id": "LP-RG-0608",
+          "title": "Louis-Napoléon Bonaparte als politischer Rivale",
+          "claim": "Ein Problem für Louis-Philippe war Charles-Louis-Napoléon Bonaparte (später Napoleon III.), der seinen Ansprüchen einen sozialen Anstrich gab und besonders unter Bauern Anhängerschaft gewann; er unternahm zwei Putschversuche und wurde nach dem zweiten zu lebenslanger Festungshaft verurteilt.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 2,
+          "createdAt": 1769951374211
+        },
+        {
+          "id": "LP-RG-0609",
+          "title": "Politische Entwicklung: Abkehr vom Liberalismus",
+          "claim": "Louis-Philippe entfernte sich im Verlauf seiner Amtszeit zunehmend von einem liberalen Regierungsstil und schloss sich schließlich sogar der Heiligen Allianz an (deren Ziel seit 1815 als Restauration vorrevolutionärer Verhältnisse beschrieben wurde).",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 2,
+          "createdAt": 1769951374311
+        }
+      ]
+    },
+    "assassination_attempts": {
+      "title": "Attentatsversuche",
+      "cards": [
+        {
+          "id": "LP-AT-0701",
+          "title": "Schuss in Paris (19. November 1832)",
+          "claim": "Am 19. November 1832 schoss ein Unbekannter in Paris auf Louis-Philippe.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951374411
+        },
+        {
+          "id": "LP-AT-0702",
+          "title": "Fieschis „Höllenmaschine“ (28. Juli 1835)",
+          "claim": "Am 28. Juli 1835 sollte Louis-Philippe bei einer Truppenparade durch eine von Joseph Fieschi konstruierte Höllenmaschine getötet werden: Der König wurde leicht verletzt, zwölf Personen aus seinem Gefolge starben; zudem gab es Tote und Verletzte unter Zuschauern am Boulevard du Temple.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 4,
+          "createdAt": 1769951374511
+        },
+        {
+          "id": "LP-AT-0703",
+          "title": "Septembergesetze und Zensur (9. September 1835)",
+          "claim": "Nach dem Anschlag von 1835 wurde durch die Septembergesetze am 9. September 1835 die Zensur wieder eingeführt und Strafen für Pressevergehen wurden stark verschärft, da oppositionellen Zeitungen eine Mitverantwortung am Klima des Anschlags zugeschrieben wurde.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951374611
+        },
+        {
+          "id": "LP-AT-0704",
+          "title": "Alibaud (25. Juni 1836)",
+          "claim": "Am 25. Juni 1836 schoss Louis Alibaud an den Tuilerien mit einer Pistole auf den vorbeifahrenden König.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951374711
+        },
+        {
+          "id": "LP-AT-0705",
+          "title": "Meunier (27. Dezember 1836)",
+          "claim": "Am 27. Dezember 1836 versuchte der Schreiber Meunier durch Abfeuern einer Schusswaffe Louis-Philippe zu töten.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951374811
+        },
+        {
+          "id": "LP-AT-0706",
+          "title": "Darmès (15. Oktober 1840)",
+          "claim": "Am 15. Oktober 1840 gab der Arbeiter Marius Ennemond Darmès fünf Karabinerschüsse auf den heimkehrenden König ab; Louis-Philippe blieb unverletzt.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951374911
+        },
+        {
+          "id": "LP-AT-0707",
+          "title": "Lecomte (16. April 1846)",
+          "claim": "Am 16. April 1846 schoss der ehemalige Forstwärter Pierre Lecomte in Fontainebleau mit einer Doppelflinte auf die königliche Kutsche; niemand wurde verletzt.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951375011
+        },
+        {
+          "id": "LP-AT-0708",
+          "title": "H. Henry (29. Juli 1846)",
+          "claim": "Am 29. Juli 1846 gab der Stahlwarenfabrikant H. Henry zwei Pistolenschüsse auf den König in den Tuileriengärten ab; beide verfehlten ihr Ziel.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 2,
+          "createdAt": 1769951375111
+        },
+        {
+          "id": "LP-AT-0709",
+          "title": "Anschlag auf seine Söhne (13. September 1841)",
+          "claim": "Am 13. September 1841 gab es einen Anschlag auf die Söhne Louis-Philippes beim Einzug eines Regiments durch den Arbeiter Quenisset.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 2,
+          "createdAt": 1769951375211
+        }
+      ]
+    },
+    "downfall_exile_death": {
+      "title": "Absetzung, Exil und Tod",
+      "cards": [
+        {
+          "id": "LP-FL-0801",
+          "title": "Februarrevolution 1848 und Absetzung (24. Februar 1848)",
+          "claim": "Mit der Februarrevolution 1848 wurde Louis-Philippe am 24. Februar 1848 abgesetzt; anschließend entstand die Zweite Französische Republik.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 4,
+          "createdAt": 1769951375311
+        },
+        {
+          "id": "LP-FL-0802",
+          "title": "Exil in England als „Graf von Neuilly“",
+          "claim": "Nach der Entmachtung ging Louis-Philippe nach England ins Exil und lebte als „Graf von Neuilly“ mit seiner Familie in Esher (Surrey).",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 4,
+          "createdAt": 1769951375411
+        },
+        {
+          "id": "LP-FL-0803",
+          "title": "Claremont House und Verbindungen nach Belgien",
+          "claim": "Königin Victoria stellte ihm Claremont House zur Verfügung; Eigentümer war sein Schwiegersohn Leopold I. von Belgien, der 1832 Louis-Philippes Tochter Louise von Orléans geheiratet hatte.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951375511
+        },
+        {
+          "id": "LP-FL-0804",
+          "title": "Tod (26. August 1850)",
+          "claim": "Louis-Philippe starb am 26. August 1850 im Alter von 76 Jahren in Claremont House (bei Esher, Grafschaft Surrey).",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 4,
+          "createdAt": 1769951375611
+        },
+        {
+          "id": "LP-FL-0805",
+          "title": "Bestattung und Umbettung",
+          "claim": "Louis-Philippe und Maria Amalia wurden zunächst in Weybridge in der katholischen Kirche St Charles Borromeo bestattet (1850 bzw. 1866). 1876 wurden beide in die Chapelle royale nach Dreux überführt, eine Begräbnisstätte, die seine Mutter ab 1816 für die Familie hatte errichten lassen.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951375711
+        }
+      ]
+    },
+    "timeline_compact": {
+      "title": "Zeitstrahl (kompakt)",
+      "cards": [
+        {
+          "id": "LP-TL-0901",
+          "title": "1773–1792: Herkunft und frühe Laufbahn",
+          "claim": "1773 Geburt in Paris; 1789 Revolutionserlebnis mit 16 Jahren; 1790 Jakobinerklub; 1792 Dienst in der Nordarmee und Valmy.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951375811
+        },
+        {
+          "id": "LP-TL-0902",
+          "title": "1793–1814: Exiljahre",
+          "claim": "1793 Flucht; Stationen u. a. Schweiz/Graubünden, Deutschland, Skandinavien, USA (ab 1797), England (ab 1800), Sizilien (bis 1814); 1809 Heirat in Palermo.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 2,
+          "createdAt": 1769951375911
+        },
+        {
+          "id": "LP-TL-0903",
+          "title": "1814–1830: Rückkehr, Reichtum, politische Positionierung",
+          "claim": "Rückkehr nach Frankreich nach Napoleons Abdankung; Vermögensaufbau; zeitweiliges Exil 1815–1817; bürgerliche Selbstdarstellung und Netzwerke im Palais Royal.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 2,
+          "createdAt": 1769951376011
+        },
+        {
+          "id": "LP-TL-0904",
+          "title": "1830–1848: König der Franzosen",
+          "claim": "1830 Julirevolution und Proklamation; wirtschaftlicher Aufschwung, Industrialisierung und Eisenbahnbau; soziale Spannungen und mehrere Attentate; zunehmende politische Verhärtung.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 3,
+          "createdAt": 1769951376111
+        },
+        {
+          "id": "LP-TL-0905",
+          "title": "1848–1850: Sturz und Tod im Exil",
+          "claim": "24. Februar 1848 Absetzung; Exil in England (Esher/Surrey) im Claremont House; Tod am 26. August 1850.",
+          "quote": "",
+          "source": "Wikipedia-Auszug (vom Nutzer bereitgestellt)",
+          "reliability": 4,
+          "createdAt": 1769951376211
+        }
+      ]
+    },
+    "group-a": {
+      "title": "Gruppe A",
+      "cards": [],
+      "persona": {
+        "avatarUrl": "/avatars/louis-philippe.png",
+        "provider": "local",
+        "style": "real",
+        "avatarId": "louis-philippe",
+        "dataDir": "data/avatars/louis-philippe",
+        "updatedAt": 1769958821474
+      }
+    }
+  }
+}

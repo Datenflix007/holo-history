@@ -4,8 +4,10 @@ import dotenv from "dotenv";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootEnvPath = path.resolve(__dirname, "..", ".env");
+const serverEnvPath = path.resolve(__dirname, ".env");
 
 dotenv.config({ path: rootEnvPath });
+dotenv.config({ path: serverEnvPath, override: true });
 
 function toBool(value, fallback = false) {
   if (value === undefined || value === null || value === "") return fallback;

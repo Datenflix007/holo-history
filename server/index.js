@@ -1,15 +1,50 @@
 import express from "express";
 import cors from "cors";
-import { initDb, addCard, listCards, topKCards } from "./storage.js";
+import path from "path";
+import { fileURLToPath } from "url";
+import multer from "multer";
+import { initDb, addCard, listCards, topKCards, getPersona, setPersona } from "./storage.js";
+import { generateAvatar } from "./avatar.js";
 import { config } from "./config.js";
 import { buildSystemPrompt } from "./prompts.js";
 import { chatCompletion } from "./llm.js";
 
 await initDb();
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const rootDir = path.resolve(__dirname, "..");
+
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: "2mb" }));
+app.use(express.static(path.join(rootDir, "web")));
+app.use("/avatars", express.static(path.join(rootDir, "public", "avatars")));
+
+const upload = multer({
+  storage: multer.memoryStorage(),
+  limits: { fileSize: 5 * 1024 * 1024 },
+  fileFilter: (req, file, cb) => {
+    const allowed = ["image/png", "image/jpeg", "image/jpg", "image/webp"];
+    if (!allowed.includes(file.mimetype)) {
+      cb(new multer.MulterError("LIMIT_UNEXPECTED_FILE", "image"));
+      return;
+    }
+    cb(null, true);
+  }
+});
+
+function handleUpload(req, res, next) {
+  upload.single("image")(req, res, (err) => {
+    if (!err) return next();
+    if (err instanceof multer.MulterError) {
+      if (err.code === "LIMIT_FILE_SIZE") {
+        return res.status(400).json({ error: "file too large (max 5MB)" });
+      }
+      return res.status(400).json({ error: "invalid file type (png/jpg/webp only)" });
+    }
+    return res.status(400).json({ error: err.message || "upload error" });
+  });
+}
 
 app.get("/api/health", (req,res)=>res.json({ ok:true }));
 
@@ -28,6 +63,50 @@ app.get("/api/cards", async (req,res) => {
 app.post("/api/retrieve", async (req,res) => {
   const { groupId, query } = req.body || {};
   res.json({ cards: await topKCards(groupId, query, 6) });
+});
+
+app.get("/api/persona", async (req,res) => {
+  const groupId = req.query.groupId;
+  if (!groupId) return res.status(400).json({ error: "missing groupId" });
+  const persona = await getPersona(groupId);
+  res.json({ persona: persona || null });
+});
+
+app.post("/api/persona", async (req,res) => {
+  const { groupId, persona } = req.body || {};
+  if (!groupId || !persona) return res.status(400).json({ error: "missing fields" });
+  const updated = {
+    ...persona,
+    updatedAt: persona.updatedAt || Date.now()
+  };
+  const saved = await setPersona(groupId, updated);
+  res.json({ ok: true, persona: saved });
+});
+
+app.post("/api/avatar", handleUpload, async (req,res) => {
+  try {
+    const { groupId, provider, style } = req.body || {};
+    if (!groupId) return res.status(400).json({ error: "missing groupId" });
+    if (!req.file) return res.status(400).json({ error: "missing image" });
+    const result = await generateAvatar({
+      imageBuffer: req.file.buffer,
+      mimeType: req.file.mimetype,
+      style,
+      provider,
+      fileName: req.file.originalname,
+      groupId
+    });
+    const persona = {
+      avatarUrl: result.avatarUrl,
+      provider: result.provider,
+      style: result.meta?.style || style || "real",
+      updatedAt: Date.now()
+    };
+    await setPersona(groupId, persona);
+    res.json({ ok: true, ...result });
+  } catch (err) {
+    res.status(500).json({ error: err.message || "avatar error" });
+  }
 });
 
 function formatCards(cards) {
